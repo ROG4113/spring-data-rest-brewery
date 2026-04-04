@@ -5,10 +5,12 @@ import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.aniket.spring_data_rest.domain.Beer;
 import com.aniket.spring_data_rest.domain.BeerStyleEnum;
 
+@RepositoryRestResource(path="beer", collectionResourceRel = "beer") //changing path from beers to beer and changing array name also
 public interface BeerRepository extends JpaRepository<Beer, UUID> {
     Page<Beer> findAllByBeerName(String beerName, Pageable pageable);
 
